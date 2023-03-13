@@ -2,26 +2,32 @@
     --bg: #0f1137;
     --font: #ede7ba;
     --button: yellow;
-    /*--spellingBee:;*/
+    --spellingBee:Arial;
+    --yelaccent: #f4f6c4;
+    --bluaccent: #80a9fa;
+    --bgtest: #ba4b23dd;
   }
 
 body{
     background-color: var(--bg);
+    /* width: 100%; */
+    /* height: 100%; */
 }
 
 /*header style*/
-header{
+.header{
     text-align: center;
     vertical-align: center;
     font-weight: bolder;
     width: 100%;
-    height: 150px;
+    /* height: 150px; */
 }
 
-header h1{
+.header h1{
     color: var(--font);
     align-items: center;
-    font-size: 100px;
+    font-size: 70px;
+    margin: 0;
 }
 
 /* button levels */
@@ -31,7 +37,8 @@ header h1{
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    height: 100px;
+    flex-wrap: wrap;
+    /* height: 100px; */
 }
 
 .level{
@@ -48,10 +55,90 @@ header h1{
 .level h2{
     vertical-align:middle;
     text-align: center;
-    font-size: 60px;
+    font-size: 55px;
     font-family: var(--spellingBee);
     font-weight: bold;
+    margin: 0;
 }
 
 /*history wordstats and textbox*/
+.audio-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px; /* adjust as needed */
+  }
+  
+  .audio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .playaudio {
+    width: 40%;
+    max-width: 130px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 50px;
+    flex-grow: 1;
+    order: 5;
+    background-color: var(--yelaccent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .playaudio p {
+    font-size: 16px;
+    margin: 10px 0 0 0;
+    text-align: center;
+  }
+  
+  .volbutton {
+    font-size: 55px;
+    margin-bottom: 10px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  form label {
+    color: var(--font);
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  form input {
+    width: 80%;
+    max-width: 400px;
+    height: 50px;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
 
+  .submit{
+    background-color: var(--bgtest);
+    border-radius: 50px;
+    max-width: 25%;
+    max-height: 10%;
+  }
+
+  .submit:hover{
+    background-color: black;
+    color: var(--bgtest);
+    border-radius: 50;
+    max-width: 25%;
+    max-height: 10%;
+  }
+  

@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spelling Bee Practicer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css">
+    
 </head>
 <body>
-    <header>
+    <div class="header">
         <H1>Spelling Bee Practicer</H1>
-    </header>
+    </div>
     <div id="buttonRow">
         <div class="level">
             <h2>Easy</h2>
@@ -23,14 +24,24 @@
         </div>
     </div>
 
-    <div class="bigDiv">
-        <div class="wordstat"></div>
-        <div class="history"></div>
-        <form action="">
+    <div class="audio-form-wrapper">
+        <div class="audio">
+            <div class="playaudio">
+                <i class="fa-solid fa-volume volbutton"></i>
+                <p>WORD</p>
+            </div>
+            <div class="playaudio">
+                <i class="fa-solid fa-volume volbutton"></i>
+                <p>DEFINITION</p>
+            </div>
+        </div>
+        <form action="" class="">
             <label for="">Type Word</label><br>
             <input type="text" name="" id="textbox">
+            <button class="submit">SUBMIT</button>
         </form>
-    </div>
+      </div>
+      
 
 </body>
 </html>
