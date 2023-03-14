@@ -1,11 +1,11 @@
 :root {
-    --bg: #0f1137;
+    --bg: #292935;
     --font: #ede7ba;
     --button: yellow;
-    --spellingBee:Arial;
     --yelaccent: #f4f6c4;
     --bluaccent: #80a9fa;
     --bgtest: #ba4b23dd;
+    --fontfamily: Comfortaa;
   }
 
 body{
@@ -20,44 +20,53 @@ body{
     vertical-align: center;
     font-weight: bolder;
     width: 100%;
-    /* height: 150px; */
-}
+    }
 
 .header h1{
     color: var(--font);
     align-items: center;
-    font-size: 70px;
+    font-size: 60px;
     margin: 0;
+    font-family: var(--fontfamily);
+
 }
 
 /* button levels */
+ #buttoncontainer {
+  width: 100%;
+ }
 
 #buttonRow{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: center;
+    min-width: 50%;
     flex-wrap: wrap;
-    /* height: 100px; */
 }
 
 .level{
-    width: 200px;
+    max-width: 200px;
+    min-width: 150px;
     height : 90px;
     margin: 20px;
     border-radius: 15px;
-    flex-grow: 1;
+    flex-shrink: 1;
     order: 5;
     background-color: var(--button);
-    vertical-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.level:hover {
+  background-color: var(--bluaccent);
 }
 
 .level h2{
     vertical-align:middle;
     text-align: center;
-    font-size: 55px;
-    font-family: var(--spellingBee);
-    font-weight: bold;
+    font-size: 20px;
+    font-family: var(--fontfamily);
     margin: 0;
 }
 
@@ -78,18 +87,21 @@ body{
   }
   
   .playaudio {
-    width: 40%;
-    max-width: 130px;
-    height: 100px;
-    margin: 20px;
-    border-radius: 50px;
+    max-width: 150px;
+    aspect-ratio: 1/1;
+    margin: 10px;
+    border-radius: 100px;
     flex-grow: 1;
     order: 5;
-    background-color: var(--yelaccent);
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .playaudio:hover {
+    background-color: var(--bluaccent);
   }
   
   .playaudio p {
