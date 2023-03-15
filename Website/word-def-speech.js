@@ -2,7 +2,7 @@ let generatedWord = '';
 
 function generateWord() {
   // Array of random words
-  const words = ['apple', 'banana', 'chocolate', 'diamond', 'elephant', 'football', 'guitar', 'hamburger', 'internet', 'jacket'];
+  const words = document.getElementById(["hard"]).textContent;
   // Generate a random word from the array
   generatedWord = words[Math.floor(Math.random() * words.length)];
   // Call the text-to-speech function with the generated word as input

@@ -6,7 +6,8 @@
     <title>Spelling Bee Practicer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css">
-    
+    <script src="word-def-speech.js"></script>
+
 </head>
 <body>
     <div class="header">
@@ -26,11 +27,11 @@
 
     <div class="audio-form-wrapper">
         <div class="audio">
-            <div class="playaudio">
+            <div onclick="generateWord()" class="playaudio">
                 <i class="fa-solid fa-volume volbutton"></i>
                 <p>WORD</p>
             </div>
-            <div class="playaudio">
+            <div onclick="getDefinition()" class="playaudio">
                 <i class="fa-solid fa-volume volbutton"></i>
                 <p>DEFINITION</p>
             </div>
