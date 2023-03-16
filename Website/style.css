@@ -5,8 +5,9 @@
     --yelaccent: #d3d59b;
     --bluaccent: #495c83;
     --bgtest: lightblue;
+    --wrong: #de5d5d;
     --fontfamily: Comfortaa;
-    --buttonback: #3b3b4769;
+    --buttonback: #3b3b4773;
   }
 
 body{
@@ -84,7 +85,7 @@ body{
   .audio {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     min-width: 80%;
   }
   
@@ -96,6 +97,21 @@ body{
     flex-grow: 1;
     order: 5;
     background-color: var(--buttonback);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--yelaccent);
+  }
+
+  .midaudio {
+    max-width: 150px;
+    aspect-ratio: 1/1;
+    margin: 0;
+    border-radius: 100px;
+    flex-grow: 1;
+    order: 5;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -159,9 +175,6 @@ body{
     max-width: 25%;
     max-height: 10%;
   }
-<<<<<<< Updated upstream
-  
-=======
   
   .text{
     display: none;
@@ -180,8 +193,8 @@ body{
     align-items: center;
     color: var(--font);
     font-family: var(--fontfamily);
-    margin-bottom: 30px;
-    min-height: 70px;
+    margin-bottom: 20px;
+    min-height: 50px;
     justify-content: center;
   }
 
@@ -192,4 +205,3 @@ body{
   p { 
     margin:0;
   }
->>>>>>> Stashed changes
