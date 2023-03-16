@@ -33,23 +33,33 @@ var words = [];
 
 function hardwords(){
     words = document.getElementById("hard").textContent.trim().split(" , ");
+    generateWord();
 }
 
 function mediumwords(){
     words = document.getElementById("medium").textContent.trim().split(" , ");
+    generateWord();
 }
 
 function easywords(){
     words = document.getElementById("easy").textContent.trim().split(" , ");
+    generateWord();
 }
 
 function generateWord() {
   // Generate a random word from the array
   generatedWord = words[Math.floor(Math.random() * words.length)];
-  
+  callWord();
 }
 
+function inputLower(){
+  let input = document.getElementById("textbox").textContent
+  lowerInput = input.toLowerCase();
+}
 
+function genwordLower(){
+  let genLower = generatedWord.toLowerCase
+}
 
 function callWord(){
   // Call the text-to-speech function with the generated word as input

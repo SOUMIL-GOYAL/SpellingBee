@@ -39,7 +39,7 @@
                 <p>WORD</p>
             </div>
             <div class="slider midaudio">
-                <div class="skip" onclick="generateWord">
+                <div class="skip" onclick="generateWord()">
                     <p>Next Word</p>
                 </div>
                 <input id="adjustspeed" type="range" step=".1" min=".1" max="2" value="1" oninput="rangeValue.innerText = this.value">
@@ -50,7 +50,7 @@
                 <p>DEFINITION</p>
             </div>
         </div>
-        <form action="" class="">
+        <form spellcheck="false" action="" class="">
             <label for="spelling">Spelling</label><br>
             <input type="text" name="spelling" id="textbox">
             <button class="submit">SUBMIT</button>
