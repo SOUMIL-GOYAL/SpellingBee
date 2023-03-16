@@ -29,31 +29,44 @@ function speak(text) {
 */
 
 let generatedWord = '';
+var words = [];
+
+function hardwords(){
+    words = document.getElementById("hard").textContent.trim().split(" , ");
+}
+
+function mediumwords(){
+    words = document.getElementById("medium").textContent.trim().split(" , ");
+}
+
+function easywords(){
+    words = document.getElementById("easy").textContent.trim().split(" , ");
+}
 
 function generateWord() {
-  // Get the text content of the <p> tag
-  const words = document.getElementById("hard").textContent.trim().split(" , ");
   // Generate a random word from the array
   generatedWord = words[Math.floor(Math.random() * words.length)];
   // Call the text-to-speech function with the generated word as input
-  speak(`The word is ${generatedWord}`);
+  speak(`The word is ${generatedWord}`, 0.4);
 }
 
 function getDefinition() {
-  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${generatedWord}`)
+  NewgeneratedWord = generatedWord.replace(/'/g, '');
+  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${NewgeneratedWord}`)
     .then(response => response.json())
     .then(data => {
       const definition = data[0].meanings[0].definitions[0].definition;
       // Call the text-to-speech function with the extracted definition as input
-      speak(`The definition of ${generatedWord} is: ${definition}`);
+      speak(`The definition of ${generatedWord} is: ${definition}`, 0.98);
     })
     .catch(error => console.log(error));
 }
 
 // Function to convert text to speech using the Web Speech API
-function speak(text) {
+function speak(text, rate) {
   const synth = window.speechSynthesis;
   const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = rate; // Set the rate of speech
   synth.speak(utterance);
 }
 

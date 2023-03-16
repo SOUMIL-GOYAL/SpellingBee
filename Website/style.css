@@ -159,3 +159,6 @@ body{
     max-height: 10%;
   }
   
+  .text{
+    display: none;
+  }
