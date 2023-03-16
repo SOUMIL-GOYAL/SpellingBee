@@ -5,6 +5,7 @@
     --yelaccent: #d3d59b;
     --bluaccent: #495c83;
     --bgtest: lightblue;
+    --wrong: #de5d5d;
     --fontfamily: Comfortaa;
   }
 
@@ -176,4 +177,20 @@ body{
   
   .text{
     display: none;
+  }
+
+  /*skip*/
+
+  .skip {
+    max-width: 150px;
+    max-height: 50px;
+    margin: 0;
+    border-radius: 50px;
+    background-color: transparent;
+    align-items: center;
+    color: var(--bgtest);
+  }
+
+  .skip:hover {
+    background-color: var(--wrong);
   }
