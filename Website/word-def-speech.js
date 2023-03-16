@@ -46,6 +46,12 @@ function easywords(){
 function generateWord() {
   // Generate a random word from the array
   generatedWord = words[Math.floor(Math.random() * words.length)];
+  
+}
+
+
+
+function callWord(){
   // Call the text-to-speech function with the generated word as input
   speak(`The word is `, 1);
   speak(`${generatedWord}`, document.getElementById("adjustspeed").value);
