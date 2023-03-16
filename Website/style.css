@@ -7,6 +7,7 @@
     --bgtest: lightblue;
     --wrong: #de5d5d;
     --fontfamily: Comfortaa;
+    --buttonback: #3b3b4769;
   }
 
 body{
@@ -86,21 +87,24 @@ body{
     flex-wrap: wrap;
     justify-content: space-evenly;
     min-width: 80%;
+    /* width: 100%; */
   }
   
   .playaudio {
     max-width: 150px;
     aspect-ratio: 1/1;
     margin: 0;
-    border-radius: 100px;
+    border-radius: 20px;
     flex-grow: 1;
     order: 5;
-    background-color: transparent;
+    background-color: var(--buttonback);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: var(--yelaccent);
+    margin: 10px;
+    min-width: 100px;
   }
 
   .midaudio {
@@ -116,6 +120,7 @@ body{
     justify-content: center;
     align-items: center;
     color: var(--yelaccent);
+    min-width: 100px;
   }
 
   .playaudio:hover {
@@ -138,13 +143,14 @@ body{
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-top: 30px;
+    justify-content: end;
   }
   
   form label {
     color: var(--font);
     font-family: var(--fontfamily);
     font-size: 24px;
-    margin-bottom: 10px;
   }
   
   form input {
@@ -188,12 +194,12 @@ body{
     flex-direction: column;
     margin: 0;
     border-radius: 10px;
-    background-color: transparent;
+    background-color: var(--buttonback);
     align-items: center;
     color: var(--font);
     font-family: var(--fontfamily);
-    margin-bottom: 20px;
-    min-height: 50px;
+    margin-bottom: 15px;
+    min-height: 90px;
     justify-content: center;
   }
 
