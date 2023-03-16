@@ -84,7 +84,7 @@ body{
   .audio {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     min-width: 80%;
   }
   
@@ -182,15 +182,25 @@ body{
   /*skip*/
 
   .skip {
-    max-width: 150px;
-    max-height: 50px;
+    width: 100%;
+    display: flex;
+    max-height: 90px;
+    flex-direction: column;
     margin: 0;
-    border-radius: 50px;
+    border-radius: 10px;
     background-color: transparent;
     align-items: center;
-    color: var(--bgtest);
+    color: var(--font);
+    font-family: var(--fontfamily);
+    margin-bottom: 20px;
+    min-height: 50px;
+    justify-content: center;
   }
 
   .skip:hover {
-    background-color: var(--wrong);
+    background-color: var(--bluaccent);
+  }
+
+  p { 
+    margin:0;
   }

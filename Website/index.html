@@ -30,9 +30,7 @@
     </div>
 </div>
 
-    <div class="skip" onclick="generateWord">
-        <p>SKIP</p>
-    </div>
+    
 
     <div class="audio-form-wrapper">
         <div class="audio">
@@ -41,6 +39,9 @@
                 <p>WORD</p>
             </div>
             <div class="slider midaudio">
+                <div class="skip" onclick="generateWord">
+                    <p>Next Word</p>
+                </div>
                 <input id="adjustspeed" type="range" step=".1" min=".1" max="2" value="1" oninput="rangeValue.innerText = this.value">
                 <p id="rangeValue">1</p>
             </div>
