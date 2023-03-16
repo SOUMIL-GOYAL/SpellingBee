@@ -87,6 +87,7 @@ body{
     flex-wrap: wrap;
     justify-content: space-evenly;
     min-width: 80%;
+    /* width: 100%; */
   }
   
   .playaudio {
@@ -102,6 +103,8 @@ body{
     justify-content: center;
     align-items: center;
     color: var(--yelaccent);
+    margin: 10px;
+    min-width: 100px;
   }
 
   .midaudio {
@@ -117,6 +120,7 @@ body{
     justify-content: center;
     align-items: center;
     color: var(--yelaccent);
+    min-width: 100px;
   }
 
   .playaudio:hover {
