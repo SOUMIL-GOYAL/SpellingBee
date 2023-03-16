@@ -102,6 +102,21 @@ body{
     color: var(--yelaccent);
   }
 
+  .midaudio {
+    max-width: 150px;
+    aspect-ratio: 1/1;
+    margin: 0;
+    border-radius: 100px;
+    flex-grow: 1;
+    order: 5;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--yelaccent);
+  }
+
   .playaudio:hover {
     background-color: var(--bluaccent);
   }

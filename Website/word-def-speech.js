@@ -47,7 +47,8 @@ function generateWord() {
   // Generate a random word from the array
   generatedWord = words[Math.floor(Math.random() * words.length)];
   // Call the text-to-speech function with the generated word as input
-  speak(`The word is ${generatedWord}`, 0.4);
+  speak(`The word is `, 1);
+  speak(`${generatedWord}`, document.getElementById("adjustspeed").value);
 }
 
 function getDefinition() {
@@ -57,7 +58,7 @@ function getDefinition() {
     .then(data => {
       const definition = data[0].meanings[0].definitions[0].definition;
       // Call the text-to-speech function with the extracted definition as input
-      speak(`The definition of ${generatedWord} is: ${definition}`, 0.98);
+      speak(`The definition of ${generatedWord} is: ${definition}`, document.getElementById("adjustspeed").value);
     })
     .catch(error => console.log(error));
 }
