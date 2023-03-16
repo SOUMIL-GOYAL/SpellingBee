@@ -15,7 +15,13 @@ function getDefinition() {
     .then(data => {
       const definition = data[0].meanings[0].definitions[0].definition;
       // Call the text-to-speech function with the extracted definition as input
-      speak(`The definition of ${generatedWord} is: ${definition}`);
+      if (definition = null){
+        speak(`The definition of ${generatedWord} is: unavailable`);
+      }
+      else{
+        speak(`The definition of ${generatedWord} is: ${definition}`);
+      }
+      
     })
     .catch(error => console.log(error));
 }

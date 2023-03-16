@@ -53,12 +53,31 @@ function generateWord() {
 }
 
 function inputLower(){
-  let input = document.getElementById("textbox").textContent
-  lowerInput = input.toLowerCase();
+  //console.log('inputLower function called'); // Add this line to check if the function is being called
+  let input = document.getElementById("textbox").value;
+  let iStr = input.toString();
+  //console.log(input);
+  const lowerInput = iStr.toLowerCase();
+  genwordLower(lowerInput);
 }
 
-function genwordLower(){
-  let genLower = generatedWord.toLowerCase
+function genwordLower(lowerInput){
+  const normalizedWord = generatedWord.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+  const lowernorm = normalizedWord.toLowerCase();
+  const matchlowernorm = lowernorm.replace(/'/g, '');
+  matching(matchlowernorm, lowerInput);
+}
+
+function matching(matchlowernorm, lowerInput){
+  //console.log(lowerInput, matchlowernorm);
+  if (lowerInput === matchlowernorm){
+    generateWord();
+    let clear = document.getElementById("textbox").value = '';
+    return clear;
+  }
+  else{
+    alert("That is incorrect\nTry again")
+  }
 }
 
 function callWord(){
