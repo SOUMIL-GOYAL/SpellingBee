@@ -6,6 +6,7 @@
     --bluaccent: #495c83;
     --bgtest: lightblue;
     --fontfamily: Comfortaa;
+    --buttonback: #3b3b4769;
   }
 
 body{
@@ -91,10 +92,10 @@ body{
     max-width: 150px;
     aspect-ratio: 1/1;
     margin: 0;
-    border-radius: 100px;
+    border-radius: 20px;
     flex-grow: 1;
     order: 5;
-    background-color: transparent;
+    background-color: var(--buttonback);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -158,4 +159,37 @@ body{
     max-width: 25%;
     max-height: 10%;
   }
+<<<<<<< Updated upstream
   
+=======
+  
+  .text{
+    display: none;
+  }
+
+  /*skip*/
+
+  .skip {
+    width: 100%;
+    display: flex;
+    max-height: 90px;
+    flex-direction: column;
+    margin: 0;
+    border-radius: 10px;
+    background-color: var(--buttonback);
+    align-items: center;
+    color: var(--font);
+    font-family: var(--fontfamily);
+    margin-bottom: 30px;
+    min-height: 70px;
+    justify-content: center;
+  }
+
+  .skip:hover {
+    background-color: var(--bluaccent);
+  }
+
+  p { 
+    margin:0;
+  }
+>>>>>>> Stashed changes
