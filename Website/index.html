@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
 
     <link rel="stylesheet" type="text/css" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css">
-    <script src="word-def-speech.js"></script>
+    
 
 </head>
 <body>
@@ -18,19 +18,25 @@
     </div>
     <div id="buttoncontainer">
     <div id="buttonRow">
-        <div onclick="easywords()" class="level">
-            <h2>Easy</h2>
-        </div>
-        <div onclick="mediumwords()" class="level">
-            <h2>Medium</h2>
-        </div>
-        <div onclick="hardwords()" class="level">
-            <h2>Hard</h2>
-        </div>
+        <select name="" id="selection">
+            <option value="1">
+                <div id="easyWords" onclick="easywords()" class="level">
+                    <h2>Easy</h2>
+                </div>
+            </option>
+            <option value="2">
+                <div id="mediumWords" onclick="mediumwords()" class="level">
+                    <h2>Medium</h2>
+                </div>
+            </option>
+            <option value="3">
+                <div id="hardWords" onclick="hardwords()" class="level">
+                    <h2>Hard</h2>
+                </div>
+            </option>
+        </select>   
     </div>
 </div>
-
-    
 
     <div class="audio-form-wrapper">
         <div class="audio">
@@ -72,4 +78,5 @@
 
 
 </body>
+<script src="word-def-speech.js"></script>
 </html>

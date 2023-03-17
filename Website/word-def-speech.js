@@ -28,8 +28,15 @@ function speak(text) {
 }
 */
 
+if(localStorage.getItem("Correct-Words") == null){
+  var cArray = [];
+}else{
+  var cArray = JSON.parse(localStorage.getItem("Correct-Words"));
+}
+
 let generatedWord = '';
 var words = [];
+
 
 function hardwords(){
     words = document.getElementById("hard").textContent.trim().split(" , ");
@@ -52,6 +59,22 @@ function generateWord() {
   callWord();
 }
 
+document.getElementById('selection').addEventListener("change", function() {
+  if (this.value == "1") {
+    easywords();
+  }else if (this.value == "2"){
+    mediumwords();
+  }else{
+    hardwords();
+  }
+});
+
+function correctarray(cWord){
+  cArray.push(cWord.replace(/'/g, ''));
+  localStorage.setItem("Correct-Words", JSON.stringify(cArray));
+  console.log(localStorage.getItem("Correct-Words"));
+}
+
 function inputLower(){
   //console.log('inputLower function called'); // Add this line to check if the function is being called
   let input = document.getElementById("textbox").value;
@@ -71,6 +94,7 @@ function genwordLower(lowerInput){
 function matching(matchlowernorm, lowerInput){
   //console.log(lowerInput, matchlowernorm);
   if (lowerInput === matchlowernorm){
+    correctarray(generatedWord);
     generateWord();
     let clear = document.getElementById("textbox").value = '';
     return clear;
