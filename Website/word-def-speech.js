@@ -90,12 +90,14 @@ function getDefinition() {
   fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${NewgeneratedWord}`)
     .then(response => response.json())
     .then(data => {
-      const definition = data[0].meanings[0].definitions[0].definition;
-      // Call the text-to-speech function with the extracted definition as input
-      speak(`The definition of ${generatedWord} is: ${definition}`, document.getElementById("adjustspeed").value);
+      try {
+        var definition = data[0].meanings[0].definitions[0].definition;
+        speak(`The definition of ${generatedWord} is: ${definition}`, document.getElementById("adjustspeed").value);
+      } catch {
+        speak(`Sorry, the definition of ${generatedWord} is unavailable`, document.getElementById("adjustspeed").value);
+      }
+      console.log(definition);
     })
-    .catch(error => console.log(error));
-    speak(`The definition of ${generatedWord} is: Unavailable`);
 }
 
 // Function to convert text to speech using the Web Speech API
