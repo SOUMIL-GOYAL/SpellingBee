@@ -267,3 +267,21 @@ p {
   color: var(--history);
   vertical-align: middle;
 }
+
+/*footer*/
+
+footer{
+  align-items: center;
+  vertical-align: middle;
+  width: 100%;
+  height: 20%;
+  border-radius: 5px;
+}
+footer p{
+  color: var(--font);
+  font-family: var(--fontfamily);
+}
+
+a{
+  color: var(--font);
+}
