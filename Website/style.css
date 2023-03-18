@@ -9,6 +9,8 @@
   --fontfamily: Comfortaa;
   --buttonback: #3b3b4769;
   --bgaccent: #333340;
+  --history: #17745d;
+  --historyAccent: #074641;
 }
 
 body{
@@ -232,8 +234,36 @@ p {
 
 /*HISTORY*/
 #history{
+  max-width: 95%;
   margin: 10px;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: column; */
   flex-wrap: wrap;
+  align-items: center;
+  vertical-align: middle;
+  background-color: var(--bgaccent);
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.historyWord{
+  border-radius: 10px;
+  margin: 8px;
+  align-items: center;
+  vertical-align: middle;
+  min-width: 20vmax;
+}
+
+.historyWord p{
+  color: var(--font);
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  display: inline;
+  margin-left: 5px;
+}
+
+.check{
+  color: var(--history);
+  vertical-align: middle;
 }

@@ -27,6 +27,7 @@ function generateWord() {
   generatedWord = words[Math.floor(Math.random() * words.length)];
   callWord();
   let clear = document.getElementById("textbox").value = '';
+  document.getElementById("textbox").style.backgroundColor = "white";  
   return clear;
 }
 
@@ -41,7 +42,7 @@ document.getElementById('selection').addEventListener("change", function() {
 });
 
 function correctarray(cWord){
-  cArray.push(cWord.replace(/'/g, ''));
+  cArray.unshift(cWord.replace(/'/g, ''));
   localStorage.setItem("Correct-Words", JSON.stringify(cArray));
   console.log(localStorage.getItem("Correct-Words"));
   history();
@@ -69,10 +70,12 @@ function matching(matchlowernorm, lowerInput){
     correctarray(generatedWord);
     generateWord();
     let clear = document.getElementById("textbox").value = '';
+    document.getElementById("textbox").style.backgroundColor = "white";
     return clear;
   }
   else{
-    alert("That is incorrect\nTry again")
+    let red = document.getElementById("textbox").style.backgroundColor = "lightcoral";
+    return red
   }
 }
 
@@ -105,11 +108,13 @@ function speak(text, rate) {
 
 function history(){
     var dataLegnth = cArray.length;
+    document.getElementById("history").innerHTML = "";
     //historyText = document.getElementById("history").textContent
     for (i in cArray){
-      document.getElementById("history").innerHTML += "<div class='historyWord'>"+cArray[i]+"</div>";
+      document.getElementById("history").innerHTML += "<div class='historyWord'><i class='fa-solid fa-check check'></i><p>"+cArray[i]+"</p></div>";
     }
 }
 
+history();
 
 easywords();
