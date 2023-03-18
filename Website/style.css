@@ -229,3 +229,11 @@ form input {
 p { 
   margin:0;
 }
+
+/*HISTORY*/
+#history{
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

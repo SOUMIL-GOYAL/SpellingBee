@@ -1,33 +1,3 @@
-/*let generatedWord = '';
-
-function generateWord() {
-  // Array of random words
-  const words = document.getElementById("hard").textContent.split(", ");
-  // Generate a random word from the array
-  generatedWord = words[Math.floor(Math.random() * words.length)];
-  // Call the text-to-speech function with the generated word as input
-  speak(`The word is ${generatedWord}`);
-}
-
-function getDefinition() {
-  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${generatedWord}`)
-    .then(response => response.json())
-    .then(data => {
-      const definition = data[0].meanings[0].definitions[0].definition;
-      // Call the text-to-speech function with the extracted definition as input
-      speak(`The definition of ${generatedWord} is: ${definition}`);
-    })
-    .catch(error => console.log(error));
-}
-
-// Function to convert text to speech using the Web Speech API
-function speak(text) {
-  const synth = window.speechSynthesis;
-  const utterance = new SpeechSynthesisUtterance(text);
-  synth.speak(utterance);
-}
-*/
-
 if(localStorage.getItem("Correct-Words") == null){
   var cArray = [];
 }else{
@@ -36,7 +6,6 @@ if(localStorage.getItem("Correct-Words") == null){
 
 let generatedWord = '';
 var words = [];
-
 
 function hardwords(){
     words = document.getElementById("hard").textContent.trim().split(" , ");
@@ -57,6 +26,8 @@ function generateWord() {
   // Generate a random word from the array
   generatedWord = words[Math.floor(Math.random() * words.length)];
   callWord();
+  let clear = document.getElementById("textbox").value = '';
+  return clear;
 }
 
 document.getElementById('selection').addEventListener("change", function() {
@@ -73,6 +44,7 @@ function correctarray(cWord){
   cArray.push(cWord.replace(/'/g, ''));
   localStorage.setItem("Correct-Words", JSON.stringify(cArray));
   console.log(localStorage.getItem("Correct-Words"));
+  history();
 }
 
 function inputLower(){
@@ -120,6 +92,7 @@ function getDefinition() {
       speak(`The definition of ${generatedWord} is: ${definition}`, document.getElementById("adjustspeed").value);
     })
     .catch(error => console.log(error));
+    speak(`The definition of ${generatedWord} is: Unavailable`);
 }
 
 // Function to convert text to speech using the Web Speech API
@@ -130,34 +103,13 @@ function speak(text, rate) {
   synth.speak(utterance);
 }
 
-
-//original
-/*let generatedWord = '';
-
-function generateWord() {
-  // Array of random words
-  const words = ['apple', 'banana', 'chocolate', 'diamond', 'elephant', 'football', 'guitar', 'hamburger', 'internet', 'jacket'];
-  // Generate a random word from the array
-  generatedWord = words[Math.floor(Math.random() * words.length)];
-  // Call the text-to-speech function with the generated word as input
-  speak(`The word is ${generatedWord}`);
+function history(){
+    var dataLegnth = cArray.length;
+    //historyText = document.getElementById("history").textContent
+    for (i in cArray){
+      document.getElementById("history").innerHTML += "<div class='historyWord'>"+cArray[i]+"</div>";
+    }
 }
 
-function getDefinition() {
-  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${generatedWord}`)
-    .then(response => response.json())
-    .then(data => {
-      const definition = data[0].meanings[0].definitions[0].definition;
-      // Call the text-to-speech function with the extracted definition as input
-      speak(`The definition of ${generatedWord} is: ${definition}`);
-    })
-    .catch(error => console.log(error));
-}
 
-// Function to convert text to speech using the Web Speech API
-function speak(text) {
-  const synth = window.speechSynthesis;
-  const utterance = new SpeechSynthesisUtterance(text);
-  synth.speak(utterance);
-}
-*/
+easywords();
