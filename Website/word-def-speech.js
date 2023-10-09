@@ -17,10 +17,15 @@ function mediumwords(){
     generateWord();
 }
 
-function easywords(){
-    words = document.getElementById("easy").textContent.trim().split(" , ");
+function CompList(){
+    words = document.getElementById("2024 School Competition List").textContent.trim().split(" , ");
     generateWord();
 }
+
+/*function CompList(){
+  words = document.getElementById("2024 School Competition List").textContent.trim().split(" , ");
+  generateWord();
+}*/
 
 function generateWord() {
   // Generate a random word from the array
@@ -33,7 +38,7 @@ function generateWord() {
 
 document.getElementById('selection').addEventListener("change", function() {
   if (this.value == "1") {
-    easywords();
+    CompList();
   }else if (this.value == "2"){
     mediumwords();
   }else{
