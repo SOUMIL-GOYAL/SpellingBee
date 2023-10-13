@@ -18,14 +18,10 @@ function mediumwords(){
 }
 
 function CompList(){
-    words = document.getElementById("2024 School Competition List").textContent.trim().split(" , ");
+    words = document.getElementById("CompList").textContent.trim().split(" , ");
     generateWord();
 }
 
-/*function CompList(){
-  words = document.getElementById("2024 School Competition List").textContent.trim().split(" , ");
-  generateWord();
-}*/
 
 function generateWord() {
   // Generate a random word from the array
@@ -124,4 +120,4 @@ function history(){
 
 history();
 
-easywords();
+CompList();
