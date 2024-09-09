@@ -1,26 +1,31 @@
-if(localStorage.getItem("Correct-Words") == null){
+if (localStorage.getItem("Correct-Words") == null) {
   var cArray = [];
-}else{
+} else {
   var cArray = JSON.parse(localStorage.getItem("Correct-Words"));
 }
 
 let generatedWord = '';
 var words = [];
 
-function hardwords(){
-    words = document.getElementById("hard").textContent.trim().split(" , ");
-    generateWord();
+function hardwords() {
+  words = document.getElementById("hard").textContent.trim().split(" , ");
+  generateWord();
 }
 
-function mediumwords(){
-    words = document.getElementById("medium").textContent.trim().split(" , ");
-    generateWord();
+function mediumwords() {
+  words = document.getElementById("medium").textContent.trim().split(" , ");
+  generateWord();
 }
 
-function CompList(){
-    words = document.getElementById("CompList").textContent.trim().split(" , ");
-    generateWord();
+function easywords() {
+  words = document.getElementById("easy").textContent.trim().split(" , ");
+  generateWord();
 }
+
+//function CompList(){
+//    words = document.getElementById("CompList").textContent.trim().split(" , ");
+//    generateWord();
+//}
 
 
 function generateWord() {
@@ -28,28 +33,28 @@ function generateWord() {
   generatedWord = words[Math.floor(Math.random() * words.length)];
   callWord();
   let clear = document.getElementById("textbox").value = '';
-  document.getElementById("textbox").style.backgroundColor = "white";  
+  document.getElementById("textbox").style.backgroundColor = "white";
   return clear;
 }
 
-document.getElementById('selection').addEventListener("change", function() {
+document.getElementById('selection').addEventListener("change", function () {
   if (this.value == "1") {
-    CompList();
-  }else if (this.value == "2"){
+    easywords();
+  } else if (this.value == "2") {
     mediumwords();
-  }else{
+  } else {
     hardwords();
   }
 });
 
-function correctarray(cWord){
+function correctarray(cWord) {
   cArray.unshift(cWord.replace(/'/g, ''));
   localStorage.setItem("Correct-Words", JSON.stringify(cArray));
   console.log(localStorage.getItem("Correct-Words"));
   history();
 }
 
-function inputLower(){
+function inputLower() {
   //console.log('inputLower function called'); // Add this line to check if the function is being called
   let input = document.getElementById("textbox").value;
   let iStr = input.toString();
@@ -58,29 +63,29 @@ function inputLower(){
   genwordLower(lowerInput);
 }
 
-function genwordLower(lowerInput){
+function genwordLower(lowerInput) {
   const normalizedWord = generatedWord.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
   const lowernorm = normalizedWord.toLowerCase();
   const matchlowernorm = lowernorm.replace(/'/g, '');
   matching(matchlowernorm, lowerInput);
 }
 
-function matching(matchlowernorm, lowerInput){
+function matching(matchlowernorm, lowerInput) {
   //console.log(lowerInput, matchlowernorm);
-  if (lowerInput === matchlowernorm){
+  if (lowerInput === matchlowernorm) {
     correctarray(generatedWord);
     generateWord();
     let clear = document.getElementById("textbox").value = '';
     document.getElementById("textbox").style.backgroundColor = "white";
     return clear;
   }
-  else{
+  else {
     let red = document.getElementById("textbox").style.backgroundColor = "lightcoral";
     return red
   }
 }
 
-function callWord(){
+function callWord() {
   // Call the text-to-speech function with the generated word as input
   speak(`The word is `, 1);
   speak(`${generatedWord}`, document.getElementById("adjustspeed").value);
@@ -109,15 +114,15 @@ function speak(text, rate) {
   synth.speak(utterance);
 }
 
-function history(){
-    var dataLegnth = cArray.length;
-    document.getElementById("history").innerHTML = "";
-    //historyText = document.getElementById("history").textContent
-    for (i in cArray){
-      document.getElementById("history").innerHTML += "<div class='historyWord'><i class='fa-solid fa-check check'></i><p>"+cArray[i]+"</p></div>";
-    }
+function history() {
+  var dataLegnth = cArray.length;
+  document.getElementById("history").innerHTML = "";
+  //historyText = document.getElementById("history").textContent
+  for (i in cArray) {
+    document.getElementById("history").innerHTML += "<div class='historyWord'><i class='fa-solid fa-check check'></i><p>" + cArray[i] + "</p></div>";
+  }
 }
 
 history();
 
-CompList();
+easywords();
