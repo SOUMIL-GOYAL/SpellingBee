@@ -1,7 +1,15 @@
 if (localStorage.getItem("Correct-Words") == null) {
   var cArray = [];
-} else {
+}
+else {
   var cArray = JSON.parse(localStorage.getItem("Correct-Words"));
+}
+
+if (localStorage.getItem("Wrong-Words") == null) {
+  var wArray = [];
+}
+else {
+  var wArray = JSON.parse(localStorage.getItem("Wrong-Words"));
 }
 
 let generatedWord = '';
@@ -27,9 +35,11 @@ function easywords() {
 //    generateWord();
 //}
 
+var wrong = 0
 
 function generateWord() {
   // Generate a random word from the array
+  wrong = 0
   generatedWord = words[Math.floor(Math.random() * words.length)];
   callWord();
   let clear = document.getElementById("textbox").value = '';
@@ -54,6 +64,13 @@ function correctarray(cWord) {
   history();
 }
 
+function wrongarray(wWord) {
+  wArray.unshift(wWord.replace(/'/g, ''));
+  localStorage.setItem("Wrong-Words", JSON.stringify(wArray));
+  console.log(localStorage.getItem("Wrong-Words"));
+  history();
+}
+
 function inputLower() {
   //console.log('inputLower function called'); // Add this line to check if the function is being called
   let input = document.getElementById("textbox").value;
@@ -62,6 +79,44 @@ function inputLower() {
   const lowerInput = iStr.toLowerCase();
   genwordLower(lowerInput);
 }
+
+/*function genwordLower(lowerInput) {
+  const normalizedWord = generatedWord.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+  const lowernorm = normalizedWord.toLowerCase();
+  const matchlowernorm = lowernorm.replace(/'/g, '');
+  matching(matchlowernorm, lowerInput);
+}
+
+function matching(matchlowernorm, lowerInput) {
+  //console.log(lowerInput, matchlowernorm);
+  if (lowerInput === matchlowernorm) {
+    wrong = 0
+    correctarray(generatedWord);
+    generateWord();
+    let clear = document.getElementById("textbox").value = '';
+    document.getElementById("textbox").style.backgroundColor = "white";
+    console.log(wrong)
+    return clear;
+  }
+  else {
+    wrong = wrong + 1;
+    if (wrong == 1) {
+      let light = document.getElementById("textbox").style.backgroundColor = "lightcoral";
+      return light
+    }
+    else if (wrong == 2) {
+      let red = document.getElementById("textbox").style.backgroundColor = "#e02e22";
+      return red;
+    }
+    else if (wrong == 3) {
+      let dark = document.getElementById("textbox").style.backgroundColor = "#9c251c";
+      return dark;
+    }
+
+    console.log(wrong);
+
+  }
+}*/
 
 function genwordLower(lowerInput) {
   const normalizedWord = generatedWord.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
@@ -73,15 +128,29 @@ function genwordLower(lowerInput) {
 function matching(matchlowernorm, lowerInput) {
   //console.log(lowerInput, matchlowernorm);
   if (lowerInput === matchlowernorm) {
+    wrong = 0;
     correctarray(generatedWord);
     generateWord();
     let clear = document.getElementById("textbox").value = '';
     document.getElementById("textbox").style.backgroundColor = "white";
+    console.log(wrong);
     return clear;
-  }
-  else {
-    let red = document.getElementById("textbox").style.backgroundColor = "lightcoral";
-    return red
+  } else {
+    wrong = wrong + 1;
+    if (wrong == 1) {
+      let light = document.getElementById("textbox").style.backgroundColor = "lightcoral";
+      return light;
+    } else if (wrong == 2) {
+      let red = document.getElementById("textbox").style.backgroundColor = "#e02e22";
+      return red;
+    } else if (wrong == 3) {
+      let dark = document.getElementById("textbox").style.backgroundColor = "#9c251c";
+      wrongarray(generatedWord);
+      generateWord();
+      return dark;
+    }
+
+    console.log(wrong);
   }
 }
 
@@ -115,13 +184,40 @@ function speak(text, rate) {
 }
 
 function history() {
+  // Combine wArray and cArray into a single array with an additional property to indicate correctness
+  const combinedArray = [];
+
+  wArray.forEach(word => combinedArray.push({ word, correct: false }));
+  cArray.forEach(word => combinedArray.push({ word, correct: true }));
+
+  // Sort the combined array based on the order of addition
+  combinedArray.sort((a, b) => {
+    const aIndex = wArray.indexOf(a.word) !== -1 ? wArray.indexOf(a.word) : cArray.indexOf(a.word);
+    const bIndex = wArray.indexOf(b.word) !== -1 ? wArray.indexOf(b.word) : cArray.indexOf(b.word);
+    return aIndex - bIndex;
+  });
+
+  // Clear the history element
+  document.getElementById("history").innerHTML = "";
+
+  // Iterate over the combined array and add the words to the history element
+  combinedArray.forEach(item => {
+    const iconClass = item.correct ? 'fa-check check' : 'fa-xmark';
+    document.getElementById("history").innerHTML += `<div class='historyWord'><i class='fa-solid ${iconClass}'></i><p>${item.word}</p></div>`;
+  });
+}
+
+/*function history() {
   var dataLegnth = cArray.length;
   document.getElementById("history").innerHTML = "";
   //historyText = document.getElementById("history").textContent
+  for (i in wArray) {
+    document.getElementById("history").innerHTML += "<div class='historyWord'><i class='fa-solid fa-xmark'></i><p>" + wArray[i] + "</p></div>";
+  }
   for (i in cArray) {
     document.getElementById("history").innerHTML += "<div class='historyWord'><i class='fa-solid fa-check check'></i><p>" + cArray[i] + "</p></div>";
   }
-}
+}*/
 
 history();
 
