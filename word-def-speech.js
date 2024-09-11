@@ -1,3 +1,5 @@
+
+
 if (localStorage.getItem("Correct-Words") == null) {
   var cArray = [];
 } else {
@@ -151,6 +153,7 @@ function history() {
 }
 
 history();
+easywords();
 
 
 /*if (localStorage.getItem("Correct-Words") == null) {
