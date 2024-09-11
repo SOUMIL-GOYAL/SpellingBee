@@ -109,6 +109,9 @@ function matching(matchlowernorm, lowerInput) {
     } else if (wrong == 3) {
       let dark = document.getElementById("textbox").style.backgroundColor = "#9c251c";
       wrongarray(generatedWord);
+      console.log(wrong);
+      generateWord();
+      console.log(wrong);
       return dark;
     }
 
