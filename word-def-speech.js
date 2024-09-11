@@ -1,5 +1,3 @@
-
-
 if (localStorage.getItem("Correct-Words") == null) {
   var cArray = [];
 } else {
@@ -107,12 +105,10 @@ function matching(matchlowernorm, lowerInput) {
       let red = document.getElementById("textbox").style.backgroundColor = "#e02e22";
       return red;
     } else if (wrong == 3) {
-      let dark = document.getElementById("textbox").style.backgroundColor = "#9c251c";
       wrongarray(generatedWord);
       console.log(wrong);
       generateWord();
       console.log(wrong);
-      return dark;
     }
 
     console.log(wrong);
@@ -149,7 +145,7 @@ function speak(text, rate) {
 function history() {
   document.getElementById("history").innerHTML = "";
   historyArray.slice().reverse().forEach(item => {
-    const iconClass = item.correct ? 'fa-check check' : 'fa-xmark';
+    const iconClass = item.correct ? 'fa-check check' : 'fa-xmark xmark';
     document.getElementById("history").innerHTML += `<div class='historyWord'><i class='fa-solid ${iconClass}'></i><p>${item.word}</p></div>`;
   });
 }
