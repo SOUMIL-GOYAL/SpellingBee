@@ -151,7 +151,6 @@ function history() {
 }
 
 history();
-easywords();
 
 
 /*if (localStorage.getItem("Correct-Words") == null) {
