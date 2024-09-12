@@ -12,6 +12,12 @@ if (localStorage.getItem("Wrong-Words") == null) {
   var wArray = JSON.parse(localStorage.getItem("Wrong-Words"));
 }
 
+if (localStorage.getItem("Info-Words") == null) {
+  var iArray = [];
+} else {
+  var iArray = JSON.parse(localStorage.getItem("Info-Words"));
+}
+
 if (localStorage.getItem("History-Words") == null) {
   var historyArray = [];
 } else {
@@ -59,7 +65,7 @@ document.getElementById('selection').addEventListener("change", function () {
 
 function correctarray(cWord) {
   cArray.unshift(cWord.replace(/'/g, ''));
-  historyArray.push({ word: cWord.replace(/'/g, ''), correct: true });
+  historyArray.push({ word: cWord.replace(/'/g, ''), correct: 1 });
   localStorage.setItem("Correct-Words", JSON.stringify(cArray));
   localStorage.setItem("History-Words", JSON.stringify(historyArray));
   console.log(localStorage.getItem("Correct-Words"));
@@ -68,10 +74,19 @@ function correctarray(cWord) {
 
 function wrongarray(wWord) {
   wArray.unshift(wWord.replace(/'/g, ''));
-  historyArray.push({ word: wWord.replace(/'/g, ''), correct: false });
+  historyArray.push({ word: wWord.replace(/'/g, ''), correct: 2 });
   localStorage.setItem("Wrong-Words", JSON.stringify(wArray));
   localStorage.setItem("History-Words", JSON.stringify(historyArray));
   console.log(localStorage.getItem("Wrong-Words"));
+  history();
+}
+
+function infoarray(iWord) {
+  iArray.unshift(iWord.replace(/'/g, ''));
+  historyArray.push({ word: iWord.replace(/'/g, ''), correct: 3 });
+  localStorage.setItem("Info-Words", JSON.stringify(iArray));
+  localStorage.setItem("History-Words", JSON.stringify(historyArray));
+  console.log(localStorage.getItem("Info-Words"));
   history();
 }
 
@@ -108,12 +123,8 @@ function matching(matchlowernorm, lowerInput) {
       return red;
     } else if (wrong == 3) {
       wrongarray(generatedWord);
-      console.log(wrong);
       generateWord();
-      console.log(wrong);
     }
-
-    console.log(wrong);
   }
 }
 
@@ -124,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function callWord() {
-  if (userHasInteracted == false) {
+  if (userHasInteracted) {
     speak(`The word is `, 1);
     speak(`${generatedWord}`, document.getElementById("adjustspeed").value);
   }
@@ -155,7 +166,14 @@ function speak(text, rate) {
 function history() {
   document.getElementById("history").innerHTML = "";
   historyArray.slice().reverse().forEach(item => {
-    const iconClass = item.correct ? 'fa-check check' : 'fa-xmark xmark';
+    let iconClass;
+    if (item.correct == 1){
+      iconClass = 'fa-check check'
+    } else if (item.correct == 2){
+      iconClass = 'fa-check check'
+    } else if (item.correct == 3){
+      iconClass = 'fa-circle-info'
+    }
     document.getElementById("history").innerHTML += `<div class='historyWord'><i class='fa-solid ${iconClass}'></i><p>${item.word}</p></div>`;
   });
 }
