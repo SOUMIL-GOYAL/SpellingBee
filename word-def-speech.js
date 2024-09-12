@@ -1,3 +1,4 @@
+//hello
 let userHasInteracted = false;
 
 if (localStorage.getItem("Correct-Words") == null) {
