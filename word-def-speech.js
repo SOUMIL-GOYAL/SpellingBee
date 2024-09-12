@@ -1,4 +1,3 @@
-//hello
 let userHasInteracted = false;
 
 if (localStorage.getItem("Correct-Words") == null) {
@@ -125,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function callWord() {
-  if (userHasInteracted) {
+  if (userHasInteracted == false) {
     speak(`The word is `, 1);
     speak(`${generatedWord}`, document.getElementById("adjustspeed").value);
   }
