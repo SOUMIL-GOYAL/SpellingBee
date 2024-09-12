@@ -234,12 +234,12 @@ p {
 
 /*HISTORY*/
 #history{
-  max-width: 95%;
+  max-width: 100%;
   margin: 10px;
   display: flex;
-  /* flex-direction: column; */
   flex-wrap: wrap;
   align-items: center;
+  text-align: center;
   vertical-align: middle;
   background-color: var(--bgaccent);
   border-radius: 10px;

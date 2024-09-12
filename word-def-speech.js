@@ -1,5 +1,3 @@
-//hello
-
 let userHasInteracted = false;
 
 if (localStorage.getItem("Correct-Words") == null) {
@@ -12,12 +10,6 @@ if (localStorage.getItem("Wrong-Words") == null) {
   var wArray = [];
 } else {
   var wArray = JSON.parse(localStorage.getItem("Wrong-Words"));
-}
-
-if (localStorage.getItem("Info-Words") == null) {
-  var iArray = [];
-} else {
-  var iArray = JSON.parse(localStorage.getItem("Info-Words"));
 }
 
 if (localStorage.getItem("History-Words") == null) {
@@ -67,7 +59,7 @@ document.getElementById('selection').addEventListener("change", function () {
 
 function correctarray(cWord) {
   cArray.unshift(cWord.replace(/'/g, ''));
-  historyArray.push({ word: cWord.replace(/'/g, ''), correct: 1 });
+  historyArray.push({ word: cWord.replace(/'/g, ''), correct: true });
   localStorage.setItem("Correct-Words", JSON.stringify(cArray));
   localStorage.setItem("History-Words", JSON.stringify(historyArray));
   console.log(localStorage.getItem("Correct-Words"));
@@ -76,19 +68,10 @@ function correctarray(cWord) {
 
 function wrongarray(wWord) {
   wArray.unshift(wWord.replace(/'/g, ''));
-  historyArray.push({ word: wWord.replace(/'/g, ''), correct: 2 });
+  historyArray.push({ word: wWord.replace(/'/g, ''), correct: false });
   localStorage.setItem("Wrong-Words", JSON.stringify(wArray));
   localStorage.setItem("History-Words", JSON.stringify(historyArray));
   console.log(localStorage.getItem("Wrong-Words"));
-  history();
-}
-
-function infoarray(iWord) {
-  iArray.unshift(iWord.replace(/'/g, ''));
-  historyArray.push({ word: iWord.replace(/'/g, ''), correct: 3 });
-  localStorage.setItem("Info-Words", JSON.stringify(iArray));
-  localStorage.setItem("History-Words", JSON.stringify(historyArray));
-  console.log(localStorage.getItem("Info-Words"));
   history();
 }
 
@@ -130,10 +113,14 @@ function matching(matchlowernorm, lowerInput) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function () {
     userHasInteracted = true;
   });
+});*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  userHasInteracted = true; // Set the flag to true immediately when the page loads
 });
 
 function callWord() {
@@ -168,14 +155,7 @@ function speak(text, rate) {
 function history() {
   document.getElementById("history").innerHTML = "";
   historyArray.slice().reverse().forEach(item => {
-    let iconClass;
-    if (item.correct == 1){
-      iconClass = 'fa-check check'
-    } else if (item.correct == 2){
-      iconClass = 'fa-check check'
-    } else if (item.correct == 3){
-      iconClass = 'fa-circle-info'
-    }
+    const iconClass = item.correct ? 'fa-check check' : 'fa-xmark xmark';
     document.getElementById("history").innerHTML += `<div class='historyWord'><i class='fa-solid ${iconClass}'></i><p>${item.word}</p></div>`;
   });
 }
